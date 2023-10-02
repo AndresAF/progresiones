@@ -1,0 +1,294 @@
+
+<script>
+var notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+var mayorScale = [0,2,4,5,7,9,11]
+var minorScale = [0,2,3,5,7,8,10]
+var mayorChord = [0,7,11]
+var minorChord = [0, 3,7]
+var dimChord = [0,3, 6]
+var currentScale = []
+
+function findChord(scale, note, typeOfChord){
+    
+   scaleHolder = scale.slice(scale.indexOf(note))
+   let chord = ""
+   for(i in typeOfChord){
+  
+    let curr = typeOfChord[i];
+    chord += scaleHolder[curr] + " "
+
+   }
+   return chord
+ 
+  }
+function pintarProgresiones(scale){
+    var progresion1 = [6,5,4,5]
+    var p =   `<h1 class="p5"> Progresiones </h1>  
+     <table class="table table-dark">
+  <thead>
+    <tr>
+  <th scope="row">Grados <th>
+          <th scope="col">vi</th>
+      <th scope="col">V</th>
+      <th scope="col">IV</th>
+      <th scope="col">V</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+    <th scope="row">Acordes <th>
+      <td>${scale[5]}</td>
+      
+      <td>${scale[4]}</td>
+      
+      <td>${scale[3]}</td>
+      
+      <td>${scale[4]}</td>
+      </tbody>
+      </tr>
+
+
+
+       <table class="table table-dark">
+  <thead>
+    <tr>
+  <th scope="row">Grados <th>
+          <th scope="col">vi</th>
+      <th scope="col">IV</th>
+      <th scope="col">I6</th>
+      <th scope="col">V</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+    <th scope="row">Acordes <th>
+      <td>${scale[3]}</td>
+      
+      <td>${scale[0]}</td>
+      
+      <td>${scale[1]}</td>
+      <td>${scale[4]}</td>
+      
+
+      </tbody>
+      </tr>
+  `;
+    document.getElementById("progresiones").innerHTML = p}
+
+
+function paintGrados(scale, typeofscale){
+    var t;
+var mayorChord = [0,4,7]
+var minorChord = [0,3,7]
+var dimChord = [0,3, 5]
+
+  
+    
+
+      //PINTAR ESCALA MAYOR
+      if(typeofscale == mayorScale){
+   var notasEnEscala = [`${scale[0]}`, `${scale[1]}m`,`${scale[2]}m`,`${scale[3]}`,`${scale[4]}`,`${scale[5]}m`,`${scale[6]} Dim`]
+   pintarProgresiones(notasEnEscala)
+    t +=
+    `<h1 class="p5"> Grados </h1>  
+     <table class="table table-dark">
+  <thead>
+    <tr>
+  <th scope="row">Grados <th>
+          <th scope="col">I</th>
+      <th scope="col">ii</th>
+      <th scope="col">iii</th>
+      <th scope="col">IV</th>
+       <th scope="col">V</th>
+        <th scope="col">vi</th>
+         <th scope="col">vii*</th>
+    </tr>
+  </thead>
+     
+  <tbody id="tbody">
+    <th scope="row">Acordes <th>
+      <td>${scale[0]}</td>
+      
+      <td>${scale[1]}m</td>
+      
+      <td>${scale[2]}m</td>
+      
+      <td>${scale[3]}</td>
+      
+      <td>${scale[4]}</td>
+      
+      <td>${scale[5]}m</td>
+      
+      <td>${scale[6]}Dim</td>
+      
+     
+    </tr>
+
+       <tr>
+            <th scope="row"> Notas  <th>
+      <td>${findChord(notes, scale[0], mayorChord)}</td>
+      
+      <td>${findChord(notes, scale[1], minorChord)}</td>
+      
+      <td>${findChord(notes, scale[2], minorChord)}</td>
+      
+      <td>${findChord(notes, scale[3], mayorChord)}</td>
+      
+      <td>${findChord(notes, scale[4], mayorChord)}</td>
+      
+      <td>${findChord(notes, scale[5], minorChord)}</td>
+      
+      <td>${findChord(notes, scale[6], dimChord)}</td>
+      
+     
+    </tr>
+    
+      </tbody>
+</table> `
+   
+
+
+      }  
+
+      //PINTAR ESCALA MENOR
+      if(typeofscale == minorScale){
+         var notasEnEscala = [`${scale[0]}m`, `${scale[1]}m`,`${scale[2]}Aug`,`${scale[3]}m`,`${scale[4]}m`,`${scale[5]}`,`${scale[6]} `]
+         // pintarProgresiones(notasEnEscala)
+          t =
+
+  
+    `<h1 class="p5"> Grados </h1>  
+    <table class="table table-dark">
+  <thead>
+    <tr>
+        <th scope="row"> Grados  <th>
+          <th scope="col">i</th>
+      <th scope="col">ii</th>
+      <th scope="col">III Aug</th>
+      <th scope="col">iv</th>
+       <th scope="col">v</th>
+        <th scope="col">VI </th>
+         <th scope="col">VII</th>
+    </tr>
+  </thead>
+     
+  <tbody id="tbody">
+
+    <tr>
+
+    <th scope="row"> Acordes  <th>
+          <td>${scale[0]}m</td>
+      
+      <td>${scale[1]} Dim</td>
+      
+      <td>${scale[2]}</td>
+      
+      <td>${scale[3]}m</td>
+      
+      <td>${scale[4]}m </td>
+      
+      <td>${scale[5]}</td>
+      
+      <td>${scale[6]}</td>
+      
+
+
+            
+     
+    </tr>
+       <tr>
+        <th scope="row"> Acordes  <th>
+           <td>${findChord(notes, scale[0], minorChord)}</td>
+      
+      <td>${findChord(notes, scale[1], dimChord)}</td>
+      
+      <td>${findChord(notes, scale[2], mayorChord)}</td>
+      
+      <td>${findChord(notes, scale[3], minorChord)}</td>
+      
+      <td>${findChord(notes, scale[4], minorChord)}</td>
+      
+      <td>${findChord(notes, scale[4], mayorChord)}</td>
+      
+      <td>${findChord(notes, scale[4], mayorChord)}</td>
+      
+     
+     
+    </tr>
+    
+      </tbody>
+</table> `
+
+      }
+          document.getElementById("grados").innerHTML = t;
+
+      
+
+
+}
+
+function findScale(notes,scale){
+    
+    for(i in scale){
+        curr = scale[i]
+       
+        currentScale.push(notes[curr])
+      
+    }
+   
+      paintGrados(currentScale,scale)
+}
+function sliceScale(note, array, scale){
+           
+            var start = array.indexOf(note)
+            var slicedNotes=  array.slice(array.indexOf(note))
+            
+             findScale(slicedNotes, scale)
+       
+}
+
+function getValues(){
+        currentScale = []
+        const note = document.getElementById("nota").value
+        let scale = document.getElementById("escala").value
+        if(scale == "mayorScale"){ scale = mayorScale}
+          if(scale == "minorScale"){ scale = minorScale}
+
+        sliceScale(note,notes,scale)
+}
+
+
+
+
+</script>
+
+
+<div class="container">
+    <h1>Progresiones</h1>
+    <div class="selects">
+        <select name="nota" id="nota">
+            <option value="C">C</option>
+            <option value="C#">C#</option>
+            <option value="D">D</option>
+            <option value="D#">D#</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="F#">F#</option>
+            <option value="G">G</option>
+            <option value="G#">G#</option>
+            <option value="A">A</option>
+            <option value="A#">A#</option>
+            <option value="B">B</option>
+        </select>
+        <select name="escala" id="escala">
+            <option value="mayorScale">escala mayor</option>
+            <option value="minorScale">escala menor</option>
+        </select>
+        <button onclick="getValues()" class="btn btn-success p-1" >Generar</button>
+        
+    </div>
+    <div id="grados" class="">
+
+    </div> 
+    <div id="progresiones">
+      
+    </div>
+</div>
