@@ -70,6 +70,7 @@ function pintarProgresiones(scale){
 
       </tbody>
       </tr>
+     
   `;
     document.getElementById("progresiones").innerHTML = p}
 
@@ -86,9 +87,12 @@ var dimChord = [0,3, 5]
       //PINTAR ESCALA MAYOR
       if(typeofscale == mayorScale){
    var notasEnEscala = [`${scale[0]}`, `${scale[1]}m`,`${scale[2]}m`,`${scale[3]}`,`${scale[4]}`,`${scale[5]}m`,`${scale[6]} Dim`]
-   pintarProgresiones(notasEnEscala)
+   //pintarProgresiones(notasEnEscala)
+   t = "";
     t +=
-    `<h1 class="p5"> Grados </h1>  
+
+    `
+    <h1 class="p5"> Grados </h1>  
      <table class="table table-dark">
   <thead>
     <tr>
@@ -104,6 +108,28 @@ var dimChord = [0,3, 5]
   </thead>
      
   <tbody id="tbody">
+        <tr>
+
+    <th scope="row"> Notas  <th>
+          <td>${scale[0]}</td>
+      
+      <td>${scale[1]} </td>
+      
+      <td>${scale[2]}</td>
+      
+      <td>${scale[3]}</td>
+      
+      <td>${scale[4]}</td>
+      
+      <td>${scale[5]}</td>
+      
+      <td>${scale[6]}</td>
+      
+
+
+            
+     
+    </tr>
     <th scope="row">Acordes <th>
       <td>${scale[0]}</td>
       
@@ -142,7 +168,10 @@ var dimChord = [0,3, 5]
     </tr>
     
       </tbody>
-</table> `
+</table> 
+
+
+`
    
 
 
@@ -155,7 +184,9 @@ var dimChord = [0,3, 5]
           t =
 
   
-    `<h1 class="p5"> Grados </h1>  
+    `
+    
+    <h1 class="p5"> Grados </h1>  
     <table class="table table-dark">
   <thead>
     <tr>
@@ -171,6 +202,28 @@ var dimChord = [0,3, 5]
   </thead>
      
   <tbody id="tbody">
+    <tr>
+
+    <th scope="row"> Notas  <th>
+          <td>${scale[0]}</td>
+      
+      <td>${scale[1]} </td>
+      
+      <td>${scale[2]}</td>
+      
+      <td>${scale[3]}</td>
+      
+      <td>${scale[4]}</td>
+      
+      <td>${scale[5]}</td>
+      
+      <td>${scale[6]}</td>
+      
+
+
+            
+     
+    </tr>
 
     <tr>
 
@@ -218,6 +271,7 @@ var dimChord = [0,3, 5]
 </table> `
 
       }
+
           document.getElementById("grados").innerHTML = t;
 
       
